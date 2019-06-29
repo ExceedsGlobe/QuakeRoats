@@ -39,6 +39,7 @@ public final class QueryUtils {
             return null;
         }
         List<Earthquake> earthquakes=new ArrayList<>();
+
         try {
             // Create a JSONObject from the SAMPLE_JSON_RESPONSE string
             JSONObject baseJsonResponse = new JSONObject(earthquakeJSON);
@@ -60,7 +61,7 @@ public final class QueryUtils {
 
                 // Extract the value for the key called "mag"
                 double magnitude = properties.getDouble("mag");
-
+                Log.i("Magnitude",String.valueOf(magnitude) );
                 // Extract the value for the key called "place"
                 String location = properties.getString("place");
 
@@ -81,7 +82,6 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem parsing the earthquake JSON results", e);
         }
         return earthquakes;
-        //return null;
     }
 
     /**

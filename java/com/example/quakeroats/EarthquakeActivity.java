@@ -20,6 +20,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -71,6 +72,7 @@ public class EarthquakeActivity extends AppCompatActivity {
     public class EarthquakeAsyncTask extends AsyncTask<String,Void,List<Earthquake>>{
         @Override
         protected List<Earthquake> doInBackground(String... strings) {
+            Log.i("Async Call", "Thread created");
             List<Earthquake> earthquakes =QueryUtils.fetchEarthquakeData(strings[0]);
 
             return earthquakes;
@@ -82,6 +84,8 @@ public class EarthquakeActivity extends AppCompatActivity {
             updateUi(earthquakes);
         }
     }
+
+
     public void updateUi(List<Earthquake> data){
         adapter.clear();
         if (data != null && !data.isEmpty()) {
